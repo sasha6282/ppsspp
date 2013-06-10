@@ -82,6 +82,8 @@ public:
 	int iMaxRecent;
 	bool bEnableCheats;
 	bool bReloadCheats;
+	bool bEnablePlugins;
+
 
 	// Sound
 	bool bEnableSound;

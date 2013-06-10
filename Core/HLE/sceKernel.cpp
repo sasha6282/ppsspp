@@ -17,6 +17,7 @@
 
 #include "Core/Config.h"
 #include "Core/CwCheat.h"
+#include "Core/SEPlugins.h"
 #include "Core/HLE/HLE.h"
 #include "Core/MIPS/MIPS.h"
 #include "Core/MIPS/MIPSCodeUtils.h"
@@ -121,7 +122,8 @@ void __KernelInit()
 	__NetInit();
 	__VaudioInit();
 	__CheatInit();
-	
+	__SEPluginsInit();
+
 	SaveState::Init();  // Must be after IO, as it may create a directory
 
 	// "Internal" PSP libraries

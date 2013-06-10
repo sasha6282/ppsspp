@@ -330,6 +330,7 @@
     <ClCompile Include="PSPMixer.cpp" />
     <ClCompile Include="Reporting.cpp" />
     <ClCompile Include="SaveState.cpp" />
+    <ClCompile Include="SEPlugins.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="Util\BlockAllocator.cpp" />
     <ClCompile Include="Util\PPGeDraw.cpp" />
@@ -475,6 +476,7 @@
     <ClInclude Include="PSPMixer.h" />
     <ClInclude Include="Reporting.h" />
     <ClInclude Include="SaveState.h" />
+    <ClInclude Include="SEPlugins.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Util\BlockAllocator.h" />
     <ClInclude Include="Util\PPGeDraw.h" />

@@ -1060,6 +1060,7 @@ void SystemScreen::render() {
 		g_Config.itimeformat = tf ? 1 : 0;
 	}
 	UICheckBox(GEN_ID, x, y += stride, s->T("Enable Cheats"), ALIGN_TOPLEFT, &g_Config.bEnableCheats);
+	UICheckBox(GEN_ID, x, y += stride, s->T("Enable Plugins"), ALIGN_TOPLEFT, &g_Config.bEnablePlugins);
 	HLinear hlinear2(x, y += stride + 10, 20);
 	if (UIButton(GEN_ID, hlinear2, LARGE_BUTTON_WIDTH + 150, 0, s->T("Reload Cheats"), ALIGN_TOPLEFT)) {
 		g_Config.bReloadCheats = true;
