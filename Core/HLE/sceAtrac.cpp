@@ -1419,38 +1419,38 @@ int _AtracGetIDByContext(u32 contextAddr) {
 
 // TODO: Why does this crash in HD remaster mode?
 void _AtracGenarateContext(Atrac *atrac, SceAtracId *context) {
-	if(!g_RemasterMode) {
-		context->info.buffer = atrac->first.addr;
-		context->info.bufferByte = atrac->atracBufSize;
-		context->info.secondBuffer = atrac->second.addr;
-		context->info.secondBufferByte = atrac->second.size;
-		context->info.codec = atrac->codeType;
-		context->info.loopNum = atrac->loopNum;
-		context->info.loopStart = atrac->loopStartSample > 0 ? atrac->loopStartSample : 0;
-		context->info.loopEnd = atrac->loopEndSample > 0 ? atrac->loopEndSample : 0;
-		if (atrac->first.size >= atrac->first.filesize) {
-			// state 2, all data loaded
-			context->info.state = 2;
-		} else if (atrac->loopinfoNum == 0) {
-			// state 3, lack some data, no loop info
-			context->info.state = 3;
-		} else {
-			// state 6, lack some data, has loop info
-			context->info.state = 6;
-		}
-		context->info.samplesPerChan = (atrac->codeType == PSP_MODE_AT_3_PLUS ? ATRAC3PLUS_MAX_SAMPLES : ATRAC3_MAX_SAMPLES);
-		context->info.sampleSize = atrac->atracBytesPerFrame;
-		context->info.numChan = atrac->atracChannels;
-		context->info.dataOff = atrac->firstSampleoffset;
-		context->info.endSample = atrac->endSample;
-		context->info.dataEnd = atrac->first.filesize;
-		context->info.curOff = atrac->first.size;
-		context->info.decodePos = atrac->getDecodePosBySample(atrac->currentSample);
-		context->info.streamDataByte = atrac->first.size - atrac->firstSampleoffset;
-
-		u8* buf = (u8*)context;
-		*(u32*)(buf + 0xfc) = atrac->atracID;
+	if(!g_RemasterMode)
+		return;
+	context->info.buffer = atrac->first.addr;
+	context->info.bufferByte = atrac->atracBufSize;
+	context->info.secondBuffer = atrac->second.addr;
+	context->info.secondBufferByte = atrac->second.size;
+	context->info.codec = atrac->codeType;
+	context->info.loopNum = atrac->loopNum;
+	context->info.loopStart = atrac->loopStartSample > 0 ? atrac->loopStartSample : 0;
+	context->info.loopEnd = atrac->loopEndSample > 0 ? atrac->loopEndSample : 0;
+	if (atrac->first.size >= atrac->first.filesize) {
+		// state 2, all data loaded
+		context->info.state = 2;
+	} else if (atrac->loopinfoNum == 0) {
+		// state 3, lack some data, no loop info
+		context->info.state = 3;
+	} else {
+		// state 6, lack some data, has loop info
+		context->info.state = 6;
 	}
+	context->info.samplesPerChan = (atrac->codeType == PSP_MODE_AT_3_PLUS ? ATRAC3PLUS_MAX_SAMPLES : ATRAC3_MAX_SAMPLES);
+	context->info.sampleSize = atrac->atracBytesPerFrame;
+	context->info.numChan = atrac->atracChannels;
+	context->info.dataOff = atrac->firstSampleoffset;
+	context->info.endSample = atrac->endSample;
+	context->info.dataEnd = atrac->first.filesize;
+	context->info.curOff = atrac->first.size;
+	context->info.decodePos = atrac->getDecodePosBySample(atrac->currentSample);
+	context->info.streamDataByte = atrac->first.size - atrac->firstSampleoffset;
+
+	u8* buf = (u8*)context;
+	*(u32*)(buf + 0xfc) = atrac->atracID;
 }
 
 int _sceAtracGetContextAddress(int atracID)
