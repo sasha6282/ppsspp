@@ -30,8 +30,6 @@
 #include "sceKernelMemory.h"
 #include "sceAtrac.h"
 
-#include "Core/HDRemaster.h"
-
 #define ATRAC_ERROR_API_FAIL                 0x80630002
 #define ATRAC_ERROR_NO_ATRACID               0x80630003
 #define ATRAC_ERROR_INVALID_CODECTYPE        0x80630004
