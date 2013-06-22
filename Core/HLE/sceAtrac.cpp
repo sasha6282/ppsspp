@@ -1417,10 +1417,7 @@ int _AtracGetIDByContext(u32 contextAddr) {
 	return atracID;
 }
 
-// TODO: Why does this crash in HD remaster mode?
 void _AtracGenarateContext(Atrac *atrac, SceAtracId *context) {
-	if(g_RemasterMode)
-		return;
 	context->info.buffer = atrac->first.addr;
 	context->info.bufferByte = atrac->atracBufSize;
 	context->info.secondBuffer = atrac->second.addr;
